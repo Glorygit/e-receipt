@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>e-receipt</title>
+	<script type="text/javascript" src="jquery/dist//jquery.js" ></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="margin: 50px">
+
+	<div class=" col-md-12 text-center  bg-success container-fluid " width="700px" >
+		<div>
+		<h1 style="color: white;">AMOS LALA TRADING STORE</h1>
+		<h3 style="color: white;">Shop 18 Ajagungbade Shopping Complex General Ogbomoso Oyo State <br> 08130944260, 09085763495.</h3>
+		<div class=" col-md-12 text-left">
+		<p> <b>Costumers Name: <input type="text-center" placeholder="Enter Costermers Name here" name="" style="width: 300px; height: 30px; "><br> Date:
+		<input type="date" name=""> </b> </p> 
+		</div>
+	</div> <br> <br>
+		e-Invoice 
+	</div>
+		<div class="bg-success" >
+
+		
+			<table style="align-items: : center;" class="table">
+				<thead rowspan="10">
+					<tr>
+						<th>S/N</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total</th>
+						<th>Action</th>			
+					</tr>
+				</thead>
+				<tbody>
+					<!-- <tr>
+						<td><input type="text" name="">1</td>
+						<td><input type="text" name=""></td>
+						<td><input type="text" name=""></td>
+						<td><input type="text" name=""></td>
+						<td><input type="text" name=""></td>
+						<button class="btn btn-sn"><span class="fa fa-trash"></span></button>
+						<button class="fa fa-trash">del</button>
+					</tr> -->
+					
+					<br>
+				</tbody>
+			</table>
+
+			<div class="float-left"> <div class="grandtot" style="font-weight: bold; font-size: 20px;"></div>
+				<div > <br><button id="add" class="btn-success"><b>+ Add</b></button> 
+
+					
+				</div>
+			</div>
+		</div>
+	</div><br><br><br>
+	<div class="float-left">
+		<b>______________________________ <br>
+		Costumer's Signature </b>
+	</div>
+	<div class="float-right">
+		<b>______________________________ <br>
+		Cashier's Signature </b>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		var count=0;
+	
+		$("#add").click(function(){
+			count++;
+			var tr= '<tr><td>'+count+'</td><td><input type="text" name="" placeholder="Name of the product" ></td><td><input type="number" placeholder="Enter the price in digit"name="" class="price" ></td><td><input type="number" placeholder="Enter the quant in digit" name="" class="quantity"></td><td><input type="number" name="" placeholder="Total" class="tot"></td><td><button class="bt btn=danger" id="save"><i class="fa fa-save"></i></button><button class="bt btn=danger" id="edit"><i class="fa fa-edit"></i></button><button class="bt btn=danger" id="delete"><i class="fa fa-trash"></i></button><b</td></tr><br> <hr>';
+			$("tbody").append(tr);
+
+			$(".quantity").keyup(function(){
+			// var quantt=$(this).val();
+			var quantt=$(this).closest("tr").find(".quantity").val();
+			var pricee=$(this).closest("tr").find(".price").val();
+			var Totall= quantt*pricee;
+			$(this).closest('tr').find('.tot').val(Totall);
+
+			var grandtotals=0;
+			$('.tot').each(function(){
+			var grandtotal = $(this).val()==""? grandtotal=0: grandtotal= parseFloat($(this).val());
+			grandtotals += grandtotal;
+		});
+	
+		$('.grandtot').html('Grand Total = N' + grandtotals);	
+		// if (!isNaN(Totall))
+		// 	grandtot+=Totall;
+		// $(".grandtot").html("EUR" + grandtot);
+		// // tr.find (".grandtot").val(isNaN(Totall) ? "" : grandtot);
+		// $(".grandtot").val(isNaN(Totall) ? "" : grandtot);
+		})
+			
+
+
+
+
+		})
+
+
+	
+		})
+
+	$(document).on('click' , '#delete',function(){
+		$(this).closest('tr').remove();
+	})
+	$(document).on('click' , '#save',function(){
+		$('input').prop('disabled', true);
+	})
+
+	// $(document).on('click', '#save',function(){
+	// 	$('input').closest('tr').disabled=true;
+
+
+
+	$(document).on('click' , '#edit',function(){
+		$('input').prop('disabled', false);
+
+	})
+
+
+
+
+
+
+		
+		
+
+
+
+
+</script>
+
